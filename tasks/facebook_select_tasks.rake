@@ -7,7 +7,7 @@ namespace :facebook_select do
   desc 'Update the facebook-select scripts installed at public/javascripts and public/stylesheets for this application'
   task :update => ['facebook_select:add_or_replace_facebook_select']
 
-  task :add_or_replace_tiny_mce do
+  task :add_or_replace_facebook_select do
     require 'fileutils'
     dest  = "#{RAILS_ROOT}/public/javascripts/facebooklist.js"
     dest2 = "#{RAILS_ROOT}/public/stylesheets/protomultiselect.css"
@@ -16,6 +16,8 @@ namespace :facebook_select do
       begin
         puts "Removing file #{dest}..."
         FileUtils.rm dest
+        puts "Removing file #{dest2}..."
+        FileUtils.rm dest2
         puts "Installing facebook-select version #{VERSION} to #{dest}..."
         FileUtils.cp "#{RAILS_ROOT}/vendor/plugins/facebook_select/public/javascripts/facebooklist.js", dest
         FileUtils.cp "#{RAILS_ROOT}/vendor/plugins/facebook_select/public/stylesheets/protomultiselect.css", dest2
