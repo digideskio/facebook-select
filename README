@@ -8,7 +8,9 @@ Example
 
 Installation:
 
-rake facebook_select:install
+- rake facebook_select:install
+
+- make sure protomultiselect.css and facebooklist.js are included in the head
 
 Usage in the view:
 
