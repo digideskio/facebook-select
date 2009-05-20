@@ -1,13 +1,26 @@
 FacebookSelect
 ==============
 
-Creates a facebook-style selector. Doesn't work - yet!
-
+Creates a facebook-style input.
 
 Example
 =======
 
-Example goes here.
+Installation:
+
+rake facebook_select:install
+
+Usage in the view:
+
+facebook_select('idea[tag_list]', suggested_tags_path(:format => 'js'), @suggested_tags, 'begin typing')
+
+In the controller, have a function that returns the json for the input:
+
+def suggested_tags
+  respond_to do |wants|
+    wants.js { render :inline => @suggested_tags.map { |tag| {:caption => tag, :value => tag} }.to_json }
+  end
+end
 
 
-Copyright (c) 2009 [name of plugin creator], released under the MIT license
+Copyright (c) 2009 Martijn Lafeber, released under the MIT license
