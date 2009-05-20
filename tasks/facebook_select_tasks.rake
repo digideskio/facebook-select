@@ -1,4 +1,4 @@
-VERSION = '0.0.1'
+VERSION = '1.0.3'
 
 namespace :facebook_select do
   desc 'Install the facebook-select scripts into the public directory of this application'
