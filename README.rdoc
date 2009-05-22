@@ -11,7 +11,7 @@ Adds helper method for creating facebook style selectors.
 
 == Example
 
-facebook_select_tag('idea[tag_list]', suggested_tags_path(:format => 'js'), @suggested_tags, :hint => 'Type tags')
+ facebook_select_tag('idea[tag_list]', suggested_tags_path(:format => 'js'), @suggested_tags, :hint => 'Type tags')
 
 In the controller, have a function that returns the JSON for the input:
 
