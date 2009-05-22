@@ -1,22 +1,14 @@
 module FacebookHelper
   def facebook_select_tag(name, url, tags, introtext = "begin typing")
-    listitems = ""
-    for tag in tags do
-      listitems += "<li value=\"#{tag}\">#{tag}</li>"
+    returning(String.new) do |output|
+      output << text_field_tag(name, nil, :id => "#{name}_input")
+      output << content_tag(:div, :id => "#{name}_auto", :target => "#{url}", :class => "facebook-auto") do
+        content_tag(:div, introtext, :class => "default")
+        content_tag(:ul, :class => "feed") do
+          tags.map { |tag| content_tag(:li, tag, :value => tag) }.join
+        end
+      end
+      output << javascript_tag("FancyInput.init('#{name}_input', '#{name}_auto')")
     end
-
-    return <<-END
-    <input type="text" value="" id="#{name}_input" name="#{name}" />
-
-     <div id="#{name}_auto" target="#{url}" class="facebook-auto">
-       <div class="default">
-        #{introtext}
-      </div>
-       <ul class="feed">
-       #{listitems}
-       </ul>
-     </div>
-     <script type=\"text/javascript\">FancyInput.init('#{name}_input', '#{name}_auto');</script>
-    END
   end
 end
