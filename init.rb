@@ -1,2 +1,1 @@
-# Include hook code here
-require 'facebook_select_helpers'
+ActionView::Base.send :include, FacebookHelper
