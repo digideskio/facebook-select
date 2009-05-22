@@ -1,0 +1,25 @@
+= FacebookSelect
+
+Adds helper method for creating facebook style selectors.
+(http://devthought.com/projects/mootools/textboxlist/)
+
+== Installation
+
+- <tt>rake facebook_select:install</tt>
+
+- Make sure protomultiselect.css and facebooklist.js are included in the HTML head tag
+
+== Example
+
+facebook_select_tag('idea[tag_list]', suggested_tags_path(:format => 'js'), @suggested_tags, :hint => 'Type tags')
+
+In the controller, have a function that returns the JSON for the input:
+
+def suggested_tags
+  @suggested_tags = %w(facebook selector)
+  respond_to do |wants|
+    wants.js { render :inline => @suggested_tags.map { |tag| {:caption => tag, :value => tag} }.to_json }
+  end
+end
+
+Copyright (c) 2009 Innovation Factory, released under the MIT license
