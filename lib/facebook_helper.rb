@@ -9,7 +9,7 @@ module FacebookHelper
     returning(String.new) do |output|
       output << text_field_tag(name, nil, :id => input_id)
       output << content_tag(:div, :id => auto_id, :target => url_for(url), :class => "facebook-auto") do
-        content_tag(:div, options[:hint], :class => "default")
+        content_tag(:div, options[:hint], :class => "default") + 
         content_tag(:ul, :class => "feed") do
           tags.map { |tag| content_tag(:li, tag, :value => tag) }.join
         end
